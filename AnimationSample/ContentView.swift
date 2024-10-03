@@ -10,12 +10,8 @@ import SwiftUI
 struct ContentView: View {
     
     var body: some View {
-        VStack {
-            Spacer()
-//            CircleAnimationView()
-//            CustomRectangleView()
-            CountUpAnimationTextView()
-            Spacer()
+        NavigationStack {
+            CaseListView(listCase: AnimationSampleType.self)
         }
     }
 }
