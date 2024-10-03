@@ -84,6 +84,7 @@ enum TransitionCases: String, CaseIterable, CaseShowable {
     case identityTransition
     case blurReplaceTransition
     case asymmetricTransition
+    case customRotationTransition
     
     var title: String { self.rawValue }
     
@@ -126,6 +127,9 @@ enum TransitionCases: String, CaseIterable, CaseShowable {
             
         case .asymmetricTransition:
             AsymmetricTransitionView()
+            
+        case .customRotationTransition:
+            CustomTransitionView()
         }
     }
 }
