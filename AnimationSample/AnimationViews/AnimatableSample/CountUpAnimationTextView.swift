@@ -12,12 +12,19 @@ struct CountUpAnimationTextView: View {
     @State private var text: String = "0"
     
     var body: some View {
-        CountUpAnimationText(text: text)
-            .onAppear {
-                withAnimation(.linear(duration: 5)) {
-                    text = "100"
+        VStack {
+            CountUpAnimationText(text: text)
+            Button("Start") {
+                withAnimation(.spring(duration: 5)) {
+                    text = text == "0" ? "100" : "0"
                 }
             }
+        }
+        .onAppear {
+            withAnimation(.linear(duration: 5)) {
+                text = "100"
+            }
+        }
     }
 }
 

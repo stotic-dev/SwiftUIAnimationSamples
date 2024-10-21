@@ -11,6 +11,7 @@ enum AnimationSampleType: String, CaseIterable, CaseShowable {
     
     case animatableData
     case transition
+    case phaseAnimator
     
     var title: String { self.rawValue }
     
@@ -32,6 +33,9 @@ enum AnimationSampleType: String, CaseIterable, CaseShowable {
             
         case .transition:
             TransitionCasesListView()
+            
+        case .phaseAnimator:
+            PhaseAnimatorListview()
         }
     }
 }
@@ -62,7 +66,7 @@ enum AnimatableDataCases: String, CaseIterable, CaseShowable {
             CustomRectangleView()
             
         case .countUpAnimation:
-            CountUpAnimationText()
+            CountUpAnimationTextView()
             
         case .circleAnimation:
             CircleAnimationView()
@@ -130,6 +134,38 @@ enum TransitionCases: String, CaseIterable, CaseShowable {
             
         case .customRotationTransition:
             CustomTransitionView()
+        }
+    }
+}
+
+enum PhaseAnimatorCases: String, CaseIterable, CaseShowable {
+    
+    case multiStepAnimation
+    case triggeredMultiStepAnimation
+    case loading
+    
+    var title: String { self.rawValue }
+    
+    var backgroundColor: Color {
+        
+        guard let index = Self.allCases.firstIndex(of: self) else { return .white }
+        return Color(red: Double(index) * 0.4,
+                     green: Double(index) * 0.1,
+                     blue: Double(index) * 0.2)
+    }
+    
+    @ViewBuilder
+    func getCaseView() -> some View {
+        
+        switch self {
+        case .multiStepAnimation:
+            MultiStepAnimationView()
+            
+        case .triggeredMultiStepAnimation:
+            TriggeredMultiStepAnimationView()
+            
+        case .loading:
+            LoadingView()
         }
     }
 }
